@@ -1,0 +1,32 @@
+.search-stack > input.light {
+  background-color: #e4d9ff82;
+  color: black;
+}
+
+.search-stack > input.light:focus {
+  background-color: #e8dfff;
+}
+
+.weather-stack.light, .history-stack.light {
+  background-color: #bdabee;
+  color: #393939;
+  filter: drop-shadow(0px 4px 3px #828183);
+}
+
+.weather-stack.light > .temperature {
+  color: #371c7e;
+}
+
+.history-stack.light > .history-stack-row {
+  background-color: #ede6ff82;
+  color: #5a5a5a;
+}
+
+.history-stack.light > .history-stack-row:hover {
+  background-color: #e8e0ff;
+  color: #393939;
+}
+
+.history-stack.light .history-stack-icon:hover {
+  color:#393939;
+}

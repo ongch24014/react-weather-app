@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive";
 
 export const History = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 660px)" });
-  const { history, remove, search } = useContext(WeatherContext);
+  const { history, remove, search, darkTheme } = useContext(WeatherContext);
 
   const mobileHistory = (data) => {
     return (
@@ -112,7 +112,7 @@ export const History = () => {
       justifyContent="center"
       alignItems="start"
       spacing={2}
-      className="history-stack"
+      className={(!darkTheme ? "light" : "") + " history-stack"}
     >
       <h3>Search History</h3>
       {history.length > 0 ? (

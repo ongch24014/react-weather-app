@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { WeatherContext } from "../contexts/WeatherContext";
 
 export const SearchBar = () => {
-  const { search } = useContext(WeatherContext);
+  const { search, darkTheme } = useContext(WeatherContext);
   const [formState, setFormState] = useState({
     city: "",
     country: "",
@@ -61,6 +61,7 @@ export const SearchBar = () => {
           onChange={(e) => {
             handleChange(e, "city");
           }}
+          className={!darkTheme ? "light" : ""}
         />
         <input
           type="text"
@@ -69,6 +70,7 @@ export const SearchBar = () => {
           onChange={(e) => {
             handleChange(e, "country");
           }}
+          className={!darkTheme ? "light" : ""}
         />
 
         <IconButton

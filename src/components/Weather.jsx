@@ -4,14 +4,35 @@ import Tooltip from "@mui/material/Tooltip";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { WeatherContext } from "../contexts/WeatherContext";
 import cloud from "../assets/cloud.png";
 import sun from "../assets/sun.png";
 
 export const Weather = () => {
-  const { weather } = useContext(WeatherContext);
+  const { weather, darkTheme } = useContext(WeatherContext);
+  const [chipStyle, setChipStyle] = useState({
+    chip: {
+      bgcolor: "5a3dbd",
+      color: "white",
+    },
+    icon: {
+      color: "white",
+    },
+  });
+
+  useEffect(() => {
+    setChipStyle({
+      chip: {
+        bgcolor: darkTheme ? "#5a3dbd" : "#dbd0ff",
+        color: darkTheme ? "white" : "#371c7e",
+      },
+      icon: {
+        color: darkTheme ? "white" : "#371c7e",
+      },
+    });
+  }, [darkTheme]);
 
   if (!weather) {
     return (
@@ -19,7 +40,7 @@ export const Weather = () => {
         direction="column"
         justifyContent="flex-start"
         alignItems="flex-start"
-        className="weather-stack no-weather"
+        className={(!darkTheme ? "light" : "") + " weather-stack no-weather"}
       >
         <h3>Today's Weather</h3>
         <p>No weather available. Start searching!</p>
@@ -53,7 +74,7 @@ export const Weather = () => {
       justifyContent="flex-start"
       alignItems="flex-start"
       spacing={2}
-      className="weather-stack"
+      className={(!darkTheme ? "light" : "") + " weather-stack"}
     >
       <p>
         {weather.name} , {weather.sys.country}
@@ -63,29 +84,25 @@ export const Weather = () => {
       <Stack direction="row" className="chip-stack" flexWrap="wrap">
         <Tooltip title="Max Temperature" placement="top">
           <Chip
-            icon={
-              <KeyboardDoubleArrowUpIcon sx={{ "&&": { color: "white" } }} />
-            }
+            icon={<KeyboardDoubleArrowUpIcon sx={{ "&&": chipStyle.icon }} />}
             label={maxWeather}
-            sx={{ bgcolor: "#5a3dbd", color: "white" }}
+            sx={chipStyle.chip}
           />
         </Tooltip>
 
         <Tooltip title="Min Temperature" placement="top">
           <Chip
-            icon={
-              <KeyboardDoubleArrowDownIcon sx={{ "&&": { color: "white" } }} />
-            }
+            icon={<KeyboardDoubleArrowDownIcon sx={{ "&&": chipStyle.icon }} />}
             label={minWeather}
-            sx={{ bgcolor: "#5a3dbd", color: "white" }}
+            sx={chipStyle.chip}
           />
         </Tooltip>
 
         <Tooltip title="Humidity" placement="top">
           <Chip
-            icon={<WaterDropIcon sx={{ "&&": { color: "white" } }} />}
+            icon={<WaterDropIcon sx={{ "&&": chipStyle.icon }} />}
             label={humidity}
-            sx={{ bgcolor: "#5a3dbd", color: "white" }}
+            sx={chipStyle.chip}
           />
         </Tooltip>
       </Stack>

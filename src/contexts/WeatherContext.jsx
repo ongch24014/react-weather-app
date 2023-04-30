@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { createContext, useState, useEffect } from "react";
+import bgDark from "../assets/bg-dark.png";
+import bgLight from "../assets/bg-light.png";
 
 export const WeatherContext = createContext({});
 
@@ -8,6 +10,7 @@ export const WeatherContextProvider = ({ children }) => {
   const [weather, setWeather] = useState();
   const [history, setHistory] = useState([]);
   const [error, setError] = useState("");
+  const [darkTheme, setDarkTheme] = useState(true);
 
   // load history from local storage when app is first loaded
   useEffect(() => {
@@ -16,6 +19,12 @@ export const WeatherContextProvider = ({ children }) => {
       setHistory(JSON.parse(storedHistory));
     }
   }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundImage = darkTheme
+      ? `url(${bgDark})`
+      : `url(${bgLight})`;
+  }, [darkTheme]);
 
   // save history to local storage when component is unloaded
   useEffect(() => {
@@ -79,7 +88,16 @@ export const WeatherContextProvider = ({ children }) => {
 
   return (
     <WeatherContext.Provider
-      value={{ weather, history, search, remove, error, setError }}
+      value={{
+        weather,
+        history,
+        search,
+        remove,
+        error,
+        setError,
+        darkTheme,
+        setDarkTheme,
+      }}
     >
       {children}
     </WeatherContext.Provider>
