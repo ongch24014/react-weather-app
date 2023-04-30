@@ -1,5 +1,7 @@
 # React Weather Application
 React Weather Application is a web application built using ReactJS that allows users to search for weather information in different cities around the world. The app fetches real-time weather data using the OpenWeatherMap API, and displays it in a responsive and user-friendly interface.
+
+Check out the live website at [https://react-weather-app-ch.netlify.app/](https://react-weather-app-ch.netlify.app/)!
 <p align="middle">
   <img src="./src/images/screenshot_1.png" width="450" height="375"/>
   <img src="./src/images/screenshot_2.png" width="450" height="375"/>
