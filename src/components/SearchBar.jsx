@@ -1,6 +1,7 @@
 import { Stack } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import ClearIcon from "@mui/icons-material/Clear";
 import { useContext, useState } from "react";
 import { WeatherContext } from "../contexts/WeatherContext";
 
@@ -15,6 +16,13 @@ export const SearchBar = () => {
     setFormState({
       ...formState,
       [type]: e.target.value,
+    });
+  };
+
+  const clearInput = () => {
+    setFormState({
+      city: "",
+      country: "",
     });
   };
 
@@ -64,7 +72,7 @@ export const SearchBar = () => {
         />
 
         <IconButton
-          aria-label="delete"
+          aria-label="search"
           type="submit"
           disabled={!formState.city && !formState.country}
           sx={{ color: "white" }}
@@ -72,6 +80,17 @@ export const SearchBar = () => {
           className="search-icon"
         >
           <SearchIcon />
+        </IconButton>
+
+        <IconButton
+          aria-label="clear"
+          disabled={!formState.city && !formState.country}
+          sx={{ color: "white" }}
+          variant="outlined"
+          className="clear-icon"
+          onClick={clearInput}
+        >
+          <ClearIcon />
         </IconButton>
       </Stack>
     </form>

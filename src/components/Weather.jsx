@@ -42,9 +42,9 @@ export const Weather = () => {
   };
 
   const weatherImg = isDayTime()
-    ? weather.clouds.all > 80
-      ? cloud
-      : sun
+    ? weather.weather[0].description === "clear sky"
+      ? sun
+      : cloud
     : cloud;
 
   return (

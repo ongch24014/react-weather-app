@@ -42,24 +42,34 @@ body {
   color: white;
   font-size: 15px;
   letter-spacing: 0.5px;
+  transition: 0.2s;
 }
 
 .search-stack > input::placeholder {
   color: #969696;
 }
 
+.search-stack > input:focus {
+  background-color: #26115e;
+}
+
 .search-icon {
   transition: 0.2s !important;
+}
+
+.clear-icon {
+  margin-left: 0 !important;
 }
 
 .weather-stack, .history-stack {
   color: white;
   background-color: #26115e;
-  width: 550px;
+  width: 590px;
   padding: 25px;
   box-sizing: border-box;
   border-radius: 13px;
   position: relative;
+  filter: drop-shadow(0px 4px 3px #1b0b46);
 }
 
 .no-weather > h3 {
