@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const WeatherContext = createContext({});
 
@@ -8,6 +8,25 @@ export const WeatherContextProvider = ({ children }) => {
   const [weather, setWeather] = useState();
   const [history, setHistory] = useState([]);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem("storedHistory");
+    if (storedHistory) {
+      setHistory(JSON.parse(storedHistory));
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.setItem("storedHistory", JSON.stringify(history));
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [history]);
 
   const search = (location) => {
     axios
