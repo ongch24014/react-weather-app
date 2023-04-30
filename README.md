@@ -21,6 +21,10 @@ $ git clone https://github.com/ongch24014/react-weather-app
 # Navigate to the root directory of the project
 $ cd react-weather-app
 
+# Obtain an API key from OpenWeatherMap and add it to a .env file in the root of the project
+# Replace "your_api_key_here" with the actual API key from OpenWeatherMap
+echo "REACT_APP_API_KEY=your_api_key_here" > .env
+
 # Install the required dependencies for the project
 $ npm install
 
