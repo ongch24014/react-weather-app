@@ -14,7 +14,7 @@ export const Error = () => {
 
   return (
     <Snackbar
-      open={error}
+      open={error !== ""}
       autoHideDuration={5000}
       onClose={closeError}
       ClickAwayListenerProps={{ onClickAway: () => null }}

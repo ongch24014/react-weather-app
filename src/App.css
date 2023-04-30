@@ -70,12 +70,22 @@ body {
   letter-spacing: 0.5px;
 }
 
+.chip-stack {
+  margin-top: px !important;
+}
+
+.chip-stack > div {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
 .weather-img {
   position: absolute;
   width: 40%;
   margin: 0 !important;
   right: 25px;
   top: 0;
+  transition: 0.2s;
 }
 
 .history-stack > h3 {
@@ -112,4 +122,35 @@ body {
 
 .MuiAlert-icon {
   color: #f1f1f1 !important
+}
+
+@media only screen and (max-width: 768px) {
+  .search-stack > input {
+    width: 100%;
+  }
+
+  .weather-stack, .history-stack {
+    width: 100%;
+  }
+
+  .history-stack-row {
+    padding: 10px;
+  }
+
+  .history-stack-row p {
+    font-size: 13px;
+  }
+
+  .history-stack-row .history-stack-datetime {
+    margin-top: 2px !important;
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .weather-img {
+    width: 110px;
+    right: 10px;
+    top: 30px;
+  }
 }

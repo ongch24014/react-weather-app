@@ -50,7 +50,7 @@ export const Weather = () => {
       </p>
       <h1 className="temperature">{currWeather}</h1>
       <p className="time">{weather.time}</p>
-      <Stack direction="row" spacing={2} className="chip-stack">
+      <Stack direction="row" className="chip-stack" flexWrap="wrap">
         <Tooltip title="Max Temperature" placement="top">
           <Chip
             icon={
