@@ -9,6 +9,7 @@ export const WeatherContextProvider = ({ children }) => {
   const [history, setHistory] = useState([]);
   const [error, setError] = useState("");
 
+  // load history from local storage when app is first loaded
   useEffect(() => {
     const storedHistory = localStorage.getItem("storedHistory");
     if (storedHistory) {
@@ -16,6 +17,7 @@ export const WeatherContextProvider = ({ children }) => {
     }
   }, []);
 
+  // save history to local storage when component is unloaded
   useEffect(() => {
     const handleBeforeUnload = () => {
       localStorage.setItem("storedHistory", JSON.stringify(history));

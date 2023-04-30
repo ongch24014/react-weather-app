@@ -20,9 +20,20 @@ export const SearchBar = () => {
 
   function searchLocation(e) {
     e.preventDefault();
-    const location = `${formState.city}${
-      formState.country ? `,${formState.country}` : ""
-    }`;
+    let location = "";
+    if (formState.city) {
+      location = formState.city;
+    }
+
+    if (formState.country) {
+      // if city have no value
+      if (location.length === 0) {
+        location = formState.country;
+      } else {
+        location += `, ${formState.country}`;
+      }
+    }
+
     search(location);
   }
 

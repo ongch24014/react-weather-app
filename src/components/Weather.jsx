@@ -14,7 +14,17 @@ export const Weather = () => {
   const { weather } = useContext(WeatherContext);
 
   if (!weather) {
-    return <></>;
+    return (
+      <Stack
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        className="weather-stack no-weather"
+      >
+        <h3>Today's Weather</h3>
+        <p>No weather available. Start searching!</p>
+      </Stack>
+    );
   }
 
   const currWeather = Math.round(weather.main.temp) + "°";

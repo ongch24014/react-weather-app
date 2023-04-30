@@ -8,7 +8,7 @@ import { Weather } from './components/Weather';
 import { Error } from './components/Error';
 
 axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5/weather";
-//TODO: light dark theme, No searched weather, store history in storage
+//TODO: light dark theme, No searched weather
 // search time
 function App() {
   return (
