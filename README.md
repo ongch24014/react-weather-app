@@ -1,5 +1,9 @@
 # React Weather Application
 React Weather Application is a web application built using ReactJS that allows users to search for weather information in different cities around the world. The app fetches real-time weather data using the OpenWeatherMap API, and displays it in a responsive and user-friendly interface.
+<p align="middle">
+  <img src="./src/images/screenshot_1.png" width="500" height="425"/>
+  <img src="./src/images/screenshot_2.png" width="500" height="425"/>
+</p>
 
 ## Features
 - Uses the OpenWeatherMap API to fetch weather data in real-time.
