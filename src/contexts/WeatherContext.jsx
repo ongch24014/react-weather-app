@@ -23,7 +23,6 @@ export const WeatherContextProvider = ({ children }) => {
     if (storedTheme) {
       setDarkTheme(storedTheme === "true");
     } else {
-      console.log("ueet");
       setDarkTheme(true);
     }
   }, []);
@@ -37,7 +36,6 @@ export const WeatherContextProvider = ({ children }) => {
   // save data to local storage when component is unloaded
   useEffect(() => {
     const handleBeforeUnload = () => {
-      console.log(darkTheme);
       localStorage.setItem("storedHistory", JSON.stringify(history));
       localStorage.setItem("storedTheme", darkTheme);
     };
@@ -51,7 +49,7 @@ export const WeatherContextProvider = ({ children }) => {
 
   const search = (location) => {
     axios
-      .get(`?q=${location}&units=metric&appid=20e916f3d37ffdc85157783d975b46e9`)
+      .get(`?q=${location}&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
       .then(({ data }) => {
         const duplicate = history.find((x) => x.name === data.name);
         if (duplicate) {
