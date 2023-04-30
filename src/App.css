@@ -22,6 +22,8 @@ body {
   padding: 50px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: auto 100%;
+  min-height: calc(100vh - 100px);
 }
 
 .heading{
