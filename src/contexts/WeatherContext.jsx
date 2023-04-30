@@ -10,13 +10,21 @@ export const WeatherContextProvider = ({ children }) => {
   const [weather, setWeather] = useState();
   const [history, setHistory] = useState([]);
   const [error, setError] = useState("");
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
 
-  // load history from local storage when app is first loaded
+  // load data from local storage when app is first loaded
   useEffect(() => {
     const storedHistory = localStorage.getItem("storedHistory");
     if (storedHistory) {
       setHistory(JSON.parse(storedHistory));
+    }
+
+    const storedTheme = localStorage.getItem("storedTheme");
+    if (storedTheme) {
+      setDarkTheme(storedTheme === "true");
+    } else {
+      console.log("ueet");
+      setDarkTheme(true);
     }
   }, []);
 
@@ -26,10 +34,12 @@ export const WeatherContextProvider = ({ children }) => {
       : `url(${bgLight})`;
   }, [darkTheme]);
 
-  // save history to local storage when component is unloaded
+  // save data to local storage when component is unloaded
   useEffect(() => {
     const handleBeforeUnload = () => {
+      console.log(darkTheme);
       localStorage.setItem("storedHistory", JSON.stringify(history));
+      localStorage.setItem("storedTheme", darkTheme);
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -37,7 +47,7 @@ export const WeatherContextProvider = ({ children }) => {
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [history]);
+  }, [history, darkTheme]);
 
   const search = (location) => {
     axios

@@ -18,13 +18,13 @@ p {
 }
 
 body {
-  background-image: url(/src/assets/bg-dark.png);
+  background-image: url(/src/assets/bg-light.png);
   padding: 50px;
   padding-top: 30px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 80px);
 }
 
 .theme-switch {

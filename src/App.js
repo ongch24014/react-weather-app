@@ -10,7 +10,6 @@ import { Error } from './components/Error';
 import { ThemeToggle } from './components/ThemeToggle';
 
 axios.defaults.baseURL = "https://api.openweathermap.org/data/2.5/weather";
-//TODO: light dark theme, search time
 function App() {
   return (
     <div>
