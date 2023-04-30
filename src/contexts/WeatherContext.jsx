@@ -79,7 +79,6 @@ export const WeatherContextProvider = ({ children }) => {
         data.time = formattedDate;
         // generate random id for keys
         data.uid = Math.round(Math.random() * 1000);
-        console.log(data);
         setWeather(data);
         setHistory((prev) => [data, ...prev]);
         setError("");
