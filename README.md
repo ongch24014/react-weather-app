@@ -28,3 +28,9 @@ $ npm start
 2. The current weather conditions for that city will be displayed.
 3. To search for another city, simply enter the details in the search bar and click the search icon again.
 4. To search for a previously searched city, simply click on the search icon in the history row.
+
+## Technologies Used
+React Weather App was built using the following technologies:
+- [ReactJS](https://react.dev/)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Material UI](https://mui.com/)
