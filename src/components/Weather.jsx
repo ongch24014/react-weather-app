@@ -80,7 +80,10 @@ export const Weather = () => {
         {weather.name} , {weather.sys.country}
       </p>
       <h1 className="temperature">{currWeather}</h1>
-      <Tooltip title={`Time in ${weather.name}`} placement="top">
+      <Tooltip
+        title={`Time in ${weather.name} when the temperature was taken`}
+        placement="top"
+      >
         <p className="time">{weather.time}</p>
       </Tooltip>
       <Stack direction="row" className="chip-stack" flexWrap="wrap">
