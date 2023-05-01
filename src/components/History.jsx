@@ -30,7 +30,7 @@ export const History = () => {
           <p>
             {data.name}, {data.sys.country}
           </p>
-          <p className="history-stack-datetime">{data.time}</p>
+          <p className="history-stack-datetime">{data.searchTime}</p>
         </Stack>
         <Stack
           direction="row"
@@ -81,7 +81,7 @@ export const History = () => {
           alignItems="center"
           spacing={2}
         >
-          <p className="history-stack-datetime">{data.time}</p>
+          <p className="history-stack-datetime">{data.searchTime}</p>
           <IconButton
             aria-label="search"
             size="small"

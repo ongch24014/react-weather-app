@@ -6,6 +6,29 @@ import bgLight from "../assets/bg-light.png";
 
 export const WeatherContext = createContext({});
 
+const dateConverter = (date, utc) => {
+  const dateOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  if (utc) {
+    dateOptions.timeZone = utc;
+  }
+
+  const formattedDate = date
+    .toLocaleString("en-US", dateOptions)
+    .replace(",", "")
+    .replace(/\//g, "-")
+    .toLowerCase();
+
+  return formattedDate;
+};
+
 export const WeatherContextProvider = ({ children }) => {
   const [weather, setWeather] = useState();
   const [history, setHistory] = useState([]);
@@ -57,24 +80,14 @@ export const WeatherContextProvider = ({ children }) => {
         }
         // get the country's current time
         const utc_seconds = data.dt + data.timezone;
-        const date = new Date(utc_seconds * 1000);
-        const dateOptions = {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-          timeZone: "UTC",
-        };
+        const countryDate = new Date(utc_seconds * 1000);
+        const userDate = new Date();
 
-        const formattedDate = date
-          .toLocaleString("en-US", dateOptions)
-          .replace(",", "")
-          .replace(/\//g, "-")
-          .toLowerCase();
+        const utcDate = dateConverter(countryDate, "UTC");
+        const searchTime = dateConverter(userDate);
 
-        data.time = formattedDate;
+        data.time = utcDate;
+        data.searchTime = searchTime;
         // generate random id for keys
         data.uid = Math.round(Math.random() * 1000);
         setWeather(data);
